@@ -1,0 +1,37 @@
+<div>
+  <h2>Calculadora de Investimento CDB</h2>
+  <form (ngSubmit)="calcularInvestimento()">
+    <div>
+      <label for="valorInicial">Valor Inicial:</label>
+      <input
+        type="number"
+        id="valorInicial"
+        [(ngModel)]="valorInicial"
+        name="valorInicial"
+        step="0.01"
+        required
+        placeholder="Digite o valor"
+      >
+    </div>
+    <div>
+      <label for="prazoMeses">Prazo em Meses:</label>
+      <input
+        type="number"
+        id="prazoMeses"
+        [(ngModel)]="prazoEmMeses"
+        name="prazoEmMeses"
+        required
+        placeholder="Digite o prazo"
+        min="1"
+        step="1"
+      >
+    </div>
+    <button type="submit">Calcular</button>
+  </form>
+
+  <div *ngIf="resultado">
+    <h3>Resultado do Investimento</h3>
+    <p>Valor Bruto: {{ resultado.ValorBruto | number:'1.2-2' }}</p>
+    <p>Valor Líquido: {{ resultado.ValorLiquido | number:'1.2-2' }}</p>
+  </div>
+</div>
